@@ -1,0 +1,12 @@
+[iOS_Phone 12 Pro INFO ] 2022-01-15 01:32:47.686 ServerManager:20 - starting appium server
+[iOS_Phone 12 Pro INFO ] 2022-01-15 01:32:49.869 ServerManager:29 - Appium server started
+[iOS_Phone 12 Pro INFO ] 2022-01-15 01:32:49.973 DriverManager:28 - initializing Appium driver
+[iOS_Phone 12 Pro INFO ] 2022-01-15 01:32:50.010 PropertyManager:17 - loading config properties
+[iOS_Phone 12 Pro INFO ] 2022-01-15 01:32:50.019 CapabilitiesManager:18 - getting capabilities
+[iOS_Phone 12 Pro INFO ] 2022-01-15 01:32:50.113 CapabilitiesManager:41 - appUrl is/Users/maniswa/mobileframeworkBDD/src/test/resources/apps/SwagLabsMobileApp.app
+[iOS_Phone 12 Pro INFO ] 2022-01-15 01:33:22.193 DriverManager:40 - Driver is initialized
+[iOS_Phone 12 Pro INFO ] 2022-01-15 01:33:23.488 BasePage:71 - login with standard_user
+[iOS_Phone 12 Pro INFO ] 2022-01-15 01:33:25.204 BasePage:71 - password is secret_sauce
+[iOS_Phone 12 Pro INFO ] 2022-01-15 01:33:26.177 BasePage:54 - press login button
+[iOS_Phone 12 Pro INFO ] 2022-01-15 01:33:31.570 BasePage:113 - product title is: Sauce Labs Bolt T-ShirtSauce Labs Bolt T-Shirt
+[iOS_Phone 12 Pro INFO ] 2022-01-15 01:33:33.610 BasePage:113 - product price is: $15.99$15.99
