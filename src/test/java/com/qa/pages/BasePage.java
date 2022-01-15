@@ -20,11 +20,16 @@ import static io.appium.java_client.touch.WaitOptions.waitOptions;
 import static io.appium.java_client.touch.offset.PointOption.point;
 import static java.time.Duration.ofMillis;
 
-public class BasePage {
-    private AppiumDriver<MobileElement> driver;
-    TestUtils utils = new TestUtils();
+/**
+ * This class provides resusable components of Mobile Actions
+ *
+ */
 
-    public BasePage(){
+public class BasePage {
+    TestUtils utils = new TestUtils();
+    private final AppiumDriver<MobileElement> driver;
+
+    public BasePage() {
         this.driver = new DriverManager().getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
     }
@@ -84,7 +89,7 @@ public class BasePage {
 
     public String getText(MobileElement e, String msg) {
         String txt;
-        switch(new GlobalParams().getPlatformName()){
+        switch (new GlobalParams().getPlatformName()) {
             case "Android":
                 txt = getAttribute(e, "text");
                 break;
@@ -100,7 +105,7 @@ public class BasePage {
 
     public String getText(By e, String msg) {
         String txt;
-        switch(new GlobalParams().getPlatformName()){
+        switch (new GlobalParams().getPlatformName()) {
             case "Android":
                 txt = getAttribute(e, "text");
                 break;
@@ -115,41 +120,36 @@ public class BasePage {
     }
 
     public void closeApp() {
-        ((InteractsWithApps) driver).closeApp();
+        driver.closeApp();
     }
 
+    //ToDo
     public void launchApp() {
-        ((InteractsWithApps) driver).launchApp();
+        driver.launchApp();
     }
 
     public MobileElement andScrollToElementUsingUiScrollable(String childLocAttr, String childLocValue) {
         return (MobileElement) ((FindsByAndroidUIAutomator) driver).findElementByAndroidUIAutomator(
                 "new UiScrollable(new UiSelector()" + ".scrollable(true)).scrollIntoView("
-                        + "new UiSelector()."+ childLocAttr +"(\"" + childLocValue + "\"));");
+                        + "new UiSelector()." + childLocAttr + "(\"" + childLocValue + "\"));");
     }
 
     public MobileElement iOSScrollToElementUsingMobileScroll(MobileElement e) {
-        RemoteWebElement element = ((RemoteWebElement) e);
+        RemoteWebElement element = e;
         String elementID = element.getId();
         HashMap<String, String> scrollObject = new HashMap<String, String>();
         scrollObject.put("element", elementID);
-//	  scrollObject.put("direction", "down");
-//	  scrollObject.put("predicateString", "label == 'ADD TO CART'");
-//	  scrollObject.put("name", "test-ADD TO CART");
         scrollObject.put("toVisible", "sdfnjksdnfkld");
         driver.executeScript("mobile:scroll", scrollObject);
         return e;
     }
 
     public By iOSScrollToElementUsingMobileScrollParent(MobileElement parentE, String predicateString) {
-        RemoteWebElement parent = (RemoteWebElement)parentE;
+        RemoteWebElement parent = parentE;
         String parentID = parent.getId();
         HashMap<String, String> scrollObject = new HashMap<String, String>();
         scrollObject.put("element", parentID);
-//	  scrollObject.put("direction", "down");
-	  scrollObject.put("predicateString", predicateString);
-//	  scrollObject.put("name", "test-ADD TO CART");
-//        scrollObject.put("toVisible", "sdfnjksdnfkld");
+        scrollObject.put("predicateString", predicateString);
         driver.executeScript("mobile:scroll", scrollObject);
         By m = MobileBy.iOSNsPredicateString(predicateString);
         System.out.println("Mobilelement is " + m);
@@ -184,7 +184,7 @@ public class BasePage {
                 swipe(startX, startY, endX, endY, 1000);
             }
         }
-        if(!isFound){
+        if (!isFound) {
             throw new Exception("Element not found");
         }
         return element;
@@ -218,7 +218,7 @@ public class BasePage {
                 swipe(startX, startY, endX, endY, 1000);
             }
         }
-        if(!isFound){
+        if (!isFound) {
             throw new Exception("Element not found");
         }
         return element;
@@ -230,10 +230,7 @@ public class BasePage {
             return wait.until(new ExpectedCondition<Boolean>() {
                 @Override
                 public Boolean apply(WebDriver driver) {
-                    if (element.isDisplayed()) {
-                        return true;
-                    }
-                    return false;
+                    return element.isDisplayed();
                 }
             });
         } catch (Exception e) {
@@ -247,10 +244,7 @@ public class BasePage {
             return wait.until(new ExpectedCondition<Boolean>() {
                 @Override
                 public Boolean apply(WebDriver driver) {
-                    if (driver.findElement(element).isDisplayed()) {
-                        return true;
-                    }
-                    return false;
+                    return driver.findElement(element).isDisplayed();
                 }
             });
         } catch (Exception e) {
