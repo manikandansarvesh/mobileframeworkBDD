@@ -34,19 +34,21 @@ Steps to execute
 
 Pre-Requisties
 
- 	 1.Change the platformName, udid, deviceName in 	initializeGlobalParams(),GlobalParams in com.qa.utils;
- 	 2.Based on the operating system change the behaviour in start 	server(),ServerManger class
-    Ex: For Windows —>WindowsGetAppiumService() and 
+ 	 1.Change the platformName, udid, deviceName in 	
+      initializeGlobalParams(),GlobalParams in com.qa.utils;
+ 	 2.Based on the operating system change the behaviour in 
+      startserver(),ServerManger class
+     Ex: For Windows —>WindowsGetAppiumService() and 
 			 Mac —>MacGetAppiumService()
-    For Mac users configure your java,Android and Appium path to ignore
-    Error : neither android_home nor android_sdk_root environment 	variable was exported
+    For Mac users configure your system java,Android and Appium path to ignore
+    Error : neither android_home nor android_sdk_root environment variable was exported
 
 Command to execute this project
-⁃	  mvn test
+   ⁃ mvn test
 
 To obtain PMD Results
-⁃	 mvn compile site
-⁃	 mvn pmd:pmd pmd:cpd
+  ⁃	 mvn compile site
+  ⁃	 mvn pmd:pmd pmd:cpd
 
 
 
